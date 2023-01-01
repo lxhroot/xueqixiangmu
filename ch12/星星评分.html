@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>星星评分</title>
+    <link rel="stylesheet" href="./iconfont/iconfont.css">
+    <link rel="stylesheet" href="./css/starRate.css">
+    <style>
+
+    </style>
+</head>
+
+<body>
+
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+
+
+    <!-- JS插件 -->
+    <script src="./js/jquery.main.js"></script>
+    <script src="./js/starRate.js"></script>
+    <script>
+        $(function() {
+            var star1 = createStarRate(3.6);
+            $('.box1').html(star1);
+
+            //扩展1
+            var star2 = createStarRate(3.6);
+            console.log(star2);
+            $('.box2').html(star2);
+
+            //扩展2
+            var star3 = createStarRate(4.7);
+            $('.box3').html(star3);
+
+            // //扩展3
+            // $('.box4').createStarRate(3.6);
+        })
+    </script>
+</body>
+
+</html>
