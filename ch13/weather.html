@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>七日天气预报</title>
+</head>
+<link rel="stylesheet" href="css/weather.css">
+<!-- 引入jquery -->
+<script src="js/jquery.main.js"></script>
+<!-- 引入模板引擎 -->
+<script src="jquery-tmpl-master/jquery-tmpl-master/jquery.tmpl.min.js"></script>
+<body>
+    <!-- 导航栏 -->
+    <div class="top-title">
+        <img src="img/ico2.png" alt="" class="icon">
+        <div class="search">
+          <!-- 输入框 -->
+            <input type="text" name="" id="search-bar" placeholder="请输入城市">
+            <!-- 搜索按钮 -->
+            <input type="button" value="搜索" class="search-button">
+            <!-- 回到首页 -->
+            <input type="button" value="回到首页" class="backToindex">
+        </div>
+        
+    </div>
+    <!-- 视频背景 -->
+    <div class="top-banner">
+        <video muted autoplay="autoplay" loop="loop">
+            <source src="./img/weather.mp4" type="video/mp4"></source>
+        </video>
+        <!--muted：静音播放  注：高版本浏览器对视频静音后可以保证视频自动播放-->
+        <!--autoplay：自动播放-->
+        <!--loop：循环播放-->
+        
+        <!-- <video src="./img/weather.mp4" autoplay="autoplay" loop="loop"></video> -->
+    </div>
+    <!-- 内容显示区域 -->
+    <div id="mainAera">
+      <!-- 定义天气显示区域 -->
+        <div class="modle-weather">
+          <!-- 数据显示表格 -->
+          <table id="data-tab">
+            <tbody id="rows">
+
+            </tbody>
+          </table>
+          
+        </div>
+        <!-- 定义Echars显示区域 -->
+        <div id="pic-list"></div>
+    </div>
+</body>
+<!-- 引入本地编写js -->
+<script src="js/weather.js"></script>
+<!-- 引入Echarts -->
+<script src="./js/echarts.min.js"></script>
+<!-- 初始化及设置Echars -->
+<script>
+var myCharts = echarts.init(document.getElementById('pic-list'));
+
+var option = {
+  title: {
+    text: ''
+  },
+  tooltip: {
+    trigger: 'axis'
+  },
+  legend: {},
+  toolbox: {
+    show: true,
+    feature: {
+      dataZoom: {
+        yAxisIndex: 'none'
+      },
+      dataView: { readOnly: false },
+      magicType: { type: ['line', 'bar'] },
+      restore: {},
+      saveAsImage: {}
+    }
+  },
+  xAxis: {
+    type: 'category',
+    boundaryGap: false,
+    data: []
+  },
+  yAxis: {
+    type: 'value',
+    axisLabel: {
+      formatter: '{value} °C'
+    }
+  },
+  series: [
+    {
+      name: '最高温',
+      type: 'line',
+      data: [],
+      markPoint: {
+        data: [
+          { type: 'max', name: 'Max' },
+          { type: 'min', name: 'Min' }
+        ]
+      },
+      markLine: {
+        data: [{ type: 'average', name: 'Avg' }]
+      }
+    },
+    {
+      name: '最低温',
+      type: 'line',
+      data: [],
+      markPoint: {
+        data: [{ name: '周最低', value: -2, xAxis: 1, yAxis: -1.5 }]
+      },
+      markLine: {
+        data: [
+          { type: 'average', name: 'Avg' },
+          [
+            {
+              symbol: 'none',
+              x: '90%',
+              yAxis: 'max'
+            },
+            {
+              symbol: 'circle',
+              label: {
+                position: 'start',
+                formatter: 'Max'
+              },
+              type: 'max',
+              name: '最高点'
+            }
+          ]
+        ]
+      }
+    }
+  ]
+};
+
+myCharts.setOption(option)
+
+</script>
+<!-- 模板引擎 -->
+<!-- 城市数据模板 -->
+<script id="template2" type="text/x-jquery-tmpl">
+
+  <h3>${city_name}未来七日天气情况</h3>
+
+</script>
+<!-- 天气数据模板 -->
+<script id="template" type="text/x-jquery-tmpl">
+
+  <tr><td>${date}${week}</td><td>${weather}</td><td>${hei_tem}/${low_tem}℃</td></tr>
+
+</script>
+
+</html>

@@ -1,0 +1,114 @@
+/* 清空默认边距 */
+*{
+    margin: 0;
+    padding: 0;
+}
+body{
+    position: relative;
+}
+
+/* 导航栏CSS */
+.top-title{
+    width: auto;
+    height: 60px;
+    line-height: 50px;
+    background-color: black;
+}
+.top-title .icon{
+    width: 100px;
+    height: 60px;
+}
+.top-title .search{
+    float: right;
+    margin-right: 50px;
+    line-height: 50px;
+}
+.top-title .search-button{
+    height: 24px;
+    width: 80px;
+    margin-top: 13px;
+    border-radius: 10px 10px 10px 10px;
+}
+.top-title #search-bar{
+    height: 24px;
+    margin-top: 13px;
+    outline: none;
+    line-height: 24px;
+    border-radius: 10px 10px 10px 10px;
+}
+.top-title .backToindex{
+    height: 24px;
+    width: 80px;
+    margin-top: 13px;
+    margin-left: 30px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+/* 主页视频样式 */
+.top-banner{
+    width: auto;
+    height: 1000px;
+}
+.top-banner video{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+.top-banner video source{
+    width: 100%;
+    height: 100%;
+    object-fit: fill;
+}
+
+/* 内容显示区域 */
+#mainAera{
+    background-color: rgb(255, 252, 252, .5);
+    width: 1000px;
+    height: 800px;
+    position: absolute;
+    z-index: 11;
+    left: 50%; 
+    transform: translateX(-50%);
+    text-align: center;
+    margin-top: -915px;
+    border-radius: 10px 10px 10px 10px;
+}
+
+#mainAera .modle-weather{
+    width: 1000px;
+    height: 400px;
+}
+
+#mainAera .modle-weather h3{
+    float: left;
+    margin-left: -24px;
+    margin-top: 2px;
+}
+
+#mainAera .modle-weather p{
+    color: brown;
+    margin: 9px -6px;
+    float: left;
+    width: 304px;
+    background-color: rgba(255, 235, 205 ,.5);
+}
+
+#mainAera .modle-weather table{
+    
+    height: 340px;
+    border-spacing: 15px;
+    margin-left: 30px;
+    border-collapse: collapse;
+    
+}
+
+#mainAera .modle-weather table #rows td{
+    width: 290px;
+    border-bottom: 1px solid brown;
+}
+
+#mainAera #pic-list{
+    width: 1000px;
+    height: 400px;
+    border-top: 1px solid white;
+}
