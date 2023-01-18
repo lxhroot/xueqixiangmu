@@ -209,4 +209,8 @@ $(function() {
             scrollTop: topOffset - 50
         })
     })
+
+    $('.shop-car').on('click',function(){
+        location.href='./shopcartPlus.html'
+    })
 })
